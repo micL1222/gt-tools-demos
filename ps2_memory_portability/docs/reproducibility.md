@@ -100,3 +100,36 @@ The file intentionally does not embed the commit that contains itself. The exact
 ## Endpoint convention
 
 The machine-readable sweeps contain only (p=0.01,0.02,\ldots,0.99). At (p=0) or (p=1), one type has zero probability and its action is not disciplined by the ordinary ex-ante BNE condition. Those endpoints are treated as boundary cases, not silently mixed with the full-support results.
+
+## Phase 3 regeneration
+
+Phase 3 uses only NumPy, pandas, Matplotlib, and the Python standard library in
+the existing `cs206-ps2` environment. From `ps2_memory_portability/`, run:
+
+```bash
+conda run -n cs206-ps2 python scripts/run_phase3.py
+```
+
+The runner verifies the Phase 2 benchmark before generating the social-choice,
+mechanism, and auction outputs. The mechanism grids are constructed from
+integers. The auction uses seed `20603`, 100,000 common valuation draws, and the
+same sample in all four mechanism/reserve conditions.
+
+Build and execute the Phase 3 notebook with:
+
+```bash
+conda run -n cs206-ps2 python scripts/build_phase3_notebook.py
+conda run -n cs206-ps2 python scripts/execute_phase3_notebook.py
+```
+
+Run all Phase 2 and Phase 3 tests with:
+
+```bash
+conda run -n cs206-ps2 python -m unittest discover -s tests -v
+```
+
+The full 400,000-row auction simulation is generated and validated in memory.
+To avoid committing an unnecessarily large raw file, the repository records a
+400-row deterministic validation sample, the complete four-condition summary,
+and a JSON validation record containing the seed, formulas, analytical
+allocation probabilities, simulated probabilities, and absolute errors.

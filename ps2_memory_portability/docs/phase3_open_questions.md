@@ -1,6 +1,6 @@
-# Phase 3 open questions
+# Phase 3 planning questions (archived)
 
-This file records decisions that remain open. It is not an implementation specification, and no assumption below has been added to the Phase 2 Bayesian game.
+This file preserves the questions recorded at the end of Phase 2. The social-choice, mechanism-design, and auction decisions are now resolved for the normalized Phase 3 benchmark in `phase3_model_specification.md` and `auction_boundary.md`. They do not alter the Phase 2 Bayesian core. Behavioral-artifact and empirical-evidence questions below remain future work.
 
 ## Social choice
 

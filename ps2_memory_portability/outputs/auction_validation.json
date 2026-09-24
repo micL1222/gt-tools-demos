@@ -1,0 +1,59 @@
+{
+  "seed": 20603,
+  "N": 100000,
+  "value_distribution": "independent Uniform(0,1) normalized private values",
+  "reserve_values": {
+    "locked": 0.5,
+    "portable": 0.2
+  },
+  "scarce_resource": "one user's primary AI-assistant slot for the next service period",
+  "tie_break": "Platform A wins an exact eligible tie",
+  "stopping_rule": "Collect one bid per platform, apply the reserve, allocate at most one slot, compute payment, terminate.",
+  "bidding_formulas": {
+    "first_price": "b(v;r)=(v^2+r^2)/(2v) for v>=r; no eligible bid for v<r",
+    "second_price": "b(v)=v"
+  },
+  "analytical_allocation_probability": "1-r^2",
+  "same_valuation_sample_across_all_conditions": true,
+  "conditions": [
+    {
+      "mechanism": "first_price",
+      "reserve_regime": "locked",
+      "reserve": 0.5,
+      "analytical_allocation_probability": 0.75,
+      "simulated_allocation_probability": 0.75193,
+      "absolute_error": 0.0019299999999999873
+    },
+    {
+      "mechanism": "first_price",
+      "reserve_regime": "portable",
+      "reserve": 0.2,
+      "analytical_allocation_probability": 0.96,
+      "simulated_allocation_probability": 0.96004,
+      "absolute_error": 4.0000000000040004e-05
+    },
+    {
+      "mechanism": "second_price",
+      "reserve_regime": "locked",
+      "reserve": 0.5,
+      "analytical_allocation_probability": 0.75,
+      "simulated_allocation_probability": 0.75193,
+      "absolute_error": 0.0019299999999999873
+    },
+    {
+      "mechanism": "second_price",
+      "reserve_regime": "portable",
+      "reserve": 0.2,
+      "analytical_allocation_probability": 0.96,
+      "simulated_allocation_probability": 0.96004,
+      "absolute_error": 4.0000000000040004e-05
+    }
+  ],
+  "unconditional_expected_payment_gap_first_minus_second": {
+    "locked": -0.0002973663510371649,
+    "portable": -0.0009368222404020909
+  },
+  "raw_rows_generated_in_memory": 400000,
+  "raw_file_committed": false,
+  "sample_file_rows": 400
+}

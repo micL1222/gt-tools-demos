@@ -1,0 +1,135 @@
+{
+  "parameters": {
+    "c_low": 0.2,
+    "c_high": 1.2,
+    "benchmark_p": 0.7
+  },
+  "formulas": {
+    "portable_expected_utility": "EU_tau(P|c)=3q-1-c+tau",
+    "locked_expected_utility": "EU_tau(L|c)=q",
+    "portable_best_response": "2q-1-c+tau>=0",
+    "pl_prior_lower_threshold": "p>=(1+c_low-tau)/2",
+    "pl_high_type_lock_upper_condition": "tau<=1+c_high-2p",
+    "minimum_incentive_for_pl": "max(0,1+c_low-2p)"
+  },
+  "analytical_thresholds": {
+    "pl_prior_threshold_at_tau_0": 0.6,
+    "minimum_tau_for_pl_at_p_0.4": 0.4,
+    "minimum_tau_for_pl_at_p_0.7": 0.0,
+    "ll_low_type_indifference_tau": 1.2,
+    "ll_high_type_indifference_tau": 2.2,
+    "pl_high_type_lock_upper_tau_at_benchmark_p": 0.8,
+    "pp_high_type_indifference_tau": 0.2
+  },
+  "weak_best_response_note": "At tau=1+c_low, LL remains a weak pure BNE; it disappears immediately above that boundary.",
+  "benchmark_checks": {
+    "p_0.4_tau_0.39": {
+      "pure_bne": [
+        [
+          "LL",
+          "LL"
+        ],
+        [
+          "PP",
+          "PP"
+        ]
+      ],
+      "pl_pl_is_bne": false
+    },
+    "p_0.4_tau_0.40": {
+      "pure_bne": [
+        [
+          "LL",
+          "LL"
+        ],
+        [
+          "PL",
+          "PL"
+        ],
+        [
+          "PP",
+          "PP"
+        ]
+      ],
+      "pl_pl_is_bne": true
+    },
+    "p_0.4_tau_0.41": {
+      "pure_bne": [
+        [
+          "LL",
+          "LL"
+        ],
+        [
+          "PL",
+          "PL"
+        ],
+        [
+          "PP",
+          "PP"
+        ]
+      ],
+      "pl_pl_is_bne": true
+    },
+    "benchmark_tau_1.19": {
+      "pure_bne": [
+        [
+          "LL",
+          "LL"
+        ],
+        [
+          "PP",
+          "PP"
+        ]
+      ],
+      "ll_ll_is_bne": true
+    },
+    "benchmark_tau_1.20": {
+      "pure_bne": [
+        [
+          "LL",
+          "LL"
+        ],
+        [
+          "PP",
+          "PP"
+        ]
+      ],
+      "ll_ll_is_bne": true
+    },
+    "benchmark_tau_1.21": {
+      "pure_bne": [
+        [
+          "PP",
+          "PP"
+        ]
+      ],
+      "ll_ll_is_bne": false
+    }
+  },
+  "tau_zero_phase2_bne": [
+    [
+      "LL",
+      "LL"
+    ],
+    [
+      "PL",
+      "PL"
+    ]
+  ],
+  "high_type_advantage_against_ll": {
+    "tau_2.19": -0.01,
+    "tau_2.20": 0.0,
+    "tau_2.21": 0.01
+  },
+  "grid": {
+    "p_min": 0.01,
+    "p_max": 0.99,
+    "p_step": 0.01,
+    "tau_min": 0.0,
+    "tau_max": 2.5,
+    "tau_step": 0.05,
+    "rows": 80784
+  },
+  "asymmetric_pure_bne_rows": 0,
+  "asymmetric_profile_names": []
+}
