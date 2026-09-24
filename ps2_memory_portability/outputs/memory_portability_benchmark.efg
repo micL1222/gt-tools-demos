@@ -1,0 +1,32 @@
+EFG 2 R "Stay or Switch? Bayesian memory portability" { "Platform A" "Platform B" }
+""
+
+c "" 1 "Nature: joint cost types" { "Low, Low" 49/100 "Low, High" 21/100 "High, Low" 21/100 "High, High" 9/100 } 0
+p "" 1 1 "Platform A: low" { "Portable" "Locked" } 0
+p "" 2 1 "Platform B: low" { "Portable" "Locked" } 0
+t "" 1 "A Low/P; B Low/P" { 1.8, 1.8 }
+t "" 2 "A Low/P; B Low/L" { -1.2, 1.0 }
+p "" 2 1 "Platform B: low" { "Portable" "Locked" } 0
+t "" 3 "A Low/L; B Low/P" { 1.0, -1.2 }
+t "" 4 "A Low/L; B Low/L" { 0.0, 0.0 }
+p "" 1 1 "Platform A: low" { "Portable" "Locked" } 0
+p "" 2 2 "Platform B: high" { "Portable" "Locked" } 0
+t "" 5 "A Low/P; B High/P" { 1.8, 0.8 }
+t "" 6 "A Low/P; B High/L" { -1.2, 1.0 }
+p "" 2 2 "Platform B: high" { "Portable" "Locked" } 0
+t "" 7 "A Low/L; B High/P" { 1.0, -2.2 }
+t "" 8 "A Low/L; B High/L" { 0.0, 0.0 }
+p "" 1 2 "Platform A: high" { "Portable" "Locked" } 0
+p "" 2 1 "Platform B: low" { "Portable" "Locked" } 0
+t "" 9 "A High/P; B Low/P" { 0.8, 1.8 }
+t "" 10 "A High/P; B Low/L" { -2.2, 1.0 }
+p "" 2 1 "Platform B: low" { "Portable" "Locked" } 0
+t "" 11 "A High/L; B Low/P" { 1.0, -1.2 }
+t "" 12 "A High/L; B Low/L" { 0.0, 0.0 }
+p "" 1 2 "Platform A: high" { "Portable" "Locked" } 0
+p "" 2 2 "Platform B: high" { "Portable" "Locked" } 0
+t "" 13 "A High/P; B High/P" { 0.8, 0.8 }
+t "" 14 "A High/P; B High/L" { -2.2, 1.0 }
+p "" 2 2 "Platform B: high" { "Portable" "Locked" } 0
+t "" 15 "A High/L; B High/P" { 1.0, -2.2 }
+t "" 16 "A High/L; B High/L" { 0.0, 0.0 }
