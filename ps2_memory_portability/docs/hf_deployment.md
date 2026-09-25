@@ -25,9 +25,20 @@ repository, outputs, tests, credentials, runtime data, or Git history.
 Local imports, callback validation, the 76-test suite, and the HTTP smoke test
 passed on 2026-09-25. The subsequent credential check reported an authenticated
 personal namespace of `mickeystk`. No token was printed or stored in this
-repository. Deployment has not yet been attempted; the actual Space slug, URL,
-build status, and verified revision will be recorded here only after successful
-public verification.
+repository.
+
+Deployment was attempted on 2026-09-25 and stopped at repository creation with
+HTTP 402. Hugging Face reported that Gradio and Docker Spaces on the free
+`cpu-basic` tier require a PRO subscription. No Space repository was created,
+so there is no Space URL, build status, or deployed revision to report.
+
+To retry, enable a Hugging Face plan that permits Gradio Space creation for the
+authenticated namespace, confirm `hf auth whoami`, and run:
+
+```bash
+conda run -n cs206-ps2 python \
+  ps2_memory_portability/scripts/deploy_behavioral_space.py
+```
 
 ## Reproducible deployment method
 

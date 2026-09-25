@@ -173,8 +173,9 @@ Run it locally from `ps2_memory_portability/behavioral_space/`:
 conda run -n cs206-ps2 python app.py
 ```
 
-**Status:** Implemented and locally verified; public deployment pending; no
-participant evidence collected.
+**Status:** Implemented and locally verified; public deployment is blocked by
+Hugging Face's PRO requirement for Gradio Spaces on `cpu-basic`; no participant
+evidence has been collected.
 
 This is an exploratory classroom demonstration, not a representative or
 causal study. Parameters are normalized assumptions, differences from the

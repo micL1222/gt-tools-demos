@@ -82,7 +82,8 @@ artifacts that make those results auditable.
 - **Our result:** **NOT YET COLLECTED.** No participant behavior or AI-user
   response is available.
 - **Artifact evidence:** Behavioral artifact implemented and locally verified;
-  public deployment pending. The predetermined
+  public deployment was attempted but blocked by Hugging Face's hosting-plan
+  requirement for Gradio Spaces. The predetermined
   [`behavioral_scenario_catalog.csv`](../outputs/behavioral_scenario_catalog.csv),
   [`behavioral_validation.json`](../outputs/behavioral_validation.json),
   [artifact specification](behavioral_artifact_specification.md), and
@@ -92,7 +93,8 @@ artifacts that make those results auditable.
   Stay/Switch decisions depart from a simplified switching-cost benchmark.”
 - **Prohibited wording:** “Our participants exhibit status-quo bias.”
 - **Current status wording:** “Implemented and locally verified; public
-  deployment pending; no participant evidence collected.”
+  deployment is blocked by the current hosting-plan requirement; no participant
+  evidence collected.”
 
 ## Limitations and Real-World Impact
 
