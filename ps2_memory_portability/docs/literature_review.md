@@ -79,7 +79,8 @@ consequential choices such as health-plan and retirement-program selections
 with an incumbent even after technical switching friction falls. It does not
 show that AI-assistant users behave this way.
 
-The planned behavioral artifact has not been run. The safe statement is:
+The behavioral artifact is implemented and technically verified, but no
+participant plays have been analyzed. The safe statement remains:
 “Status-quo bias motivates testing whether observed Stay/Switch decisions
 depart from a simplified switching-cost benchmark.” It is not permissible to
 state that participants or AI-assistant users exhibit status quo bias until
@@ -116,7 +117,7 @@ silently relabeled as AI memory portability.
 | Switching costs | A consumer who changes suppliers in period two incurs a switching cost; history-based pricing matters | Portability incentives motivate the reduced-form payoffs; the auction application uses high/low switching hurdles |
 | Data portability | A policy/comparative-static reduction in switching costs | Central platform action and mechanism-design target |
 | User competition | Price competition for consumers purchasing systems | Separate stylized auction for one user's next-period primary-assistant slot |
-| Behavioral component | No status-quo-bias experiment in the studied model | Exploratory Stay/Switch artifact planned; no evidence collected yet |
+| Behavioral component | No status-quo-bias experiment in the studied model | Exploratory Stay/Switch artifact implemented; no participant evidence analyzed |
 
 Jeon et al. is closest because it endogenizes firms' compatibility choices and
 links data portability, switching costs, future competition, and consumer
@@ -148,9 +149,9 @@ implementation costs in a static Bayesian game and then carries its multiple
 equilibria through a collective-objective comparison, a verified-portability
 incentive, and a user-allocation auction. The project therefore studies a
 complementary information structure and application rather than claiming to be
-the first analysis of data portability. Its future behavioral artifact is an
-exploratory test motivated by status quo bias, not a completed empirical
-contribution.
+the first analysis of data portability. Its implemented behavioral artifact is
+an exploratory demonstration motivated by status quo bias, not a completed
+empirical contribution.
 
 ### Contribution statement
 
@@ -158,8 +159,8 @@ Prior work studies switching costs, data portability, compatibility, and
 platform competition. This project applies those ideas to a stylized
 AI-assistant setting with privately known implementation costs, static Bayesian
 competition and equilibrium multiplicity, then connects the game to a
-collective objective, a portability incentive, a user-allocation auction, and a
-planned behavioral switching artifact.
+collective objective, a portability incentive, a user-allocation auction, and
+an implemented exploratory behavioral switching artifact.
 
 ## 7. Evidence Boundaries
 
@@ -175,7 +176,7 @@ The reviewed sources do **not** establish that:
 - data portability always raises consumer surplus or welfare;
 - lowering technical switching costs removes behavioral inertia, privacy risk,
   security risk, or implementation cost; or
-- any participant evidence exists for the planned behavioral artifact.
+- any participant evidence exists for the behavioral artifact.
 
 Digital-platform portability, 800-number portability, and general switching
 cost evidence may be used as motivation and analogy only. The project remains

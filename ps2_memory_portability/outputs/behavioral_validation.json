@@ -1,0 +1,30 @@
+{
+  "artifact_title": "Stay or Switch?",
+  "benchmark_rule": "Switch iff g > r; Stay iff g < r; no equality cases",
+  "benchmark_stay_count": 6,
+  "benchmark_switch_count": 6,
+  "benefit_levels": [
+    0.15,
+    0.3,
+    0.45,
+    0.6
+  ],
+  "condition_count": 3,
+  "contains_participant_data": false,
+  "deployed_revision": null,
+  "deployment_status": "not_attempted",
+  "free_text_policy": "Optional, maximum 300 characters, session-only, never aggregated or persisted",
+  "gradio_version": "6.28.0",
+  "hugging_face_space_url": null,
+  "hurdle_mapping": {
+    "Full": 0.2,
+    "None": 0.5,
+    "Partial": 0.35
+  },
+  "local_smoke_test_status": "passed",
+  "peer_aggregation_policy": "Same-condition and overall summaries use prior anonymous plays only; current play is added after the snapshot; raw rows are never displayed",
+  "privacy_storage_policy": "Thread-safe process-memory aggregate only; no persistent participant-data backend",
+  "python_version": "3.12.14",
+  "scenario_count": 12,
+  "validation_timestamp_utc": "2026-09-25T14:48:32.832982+00:00"
+}

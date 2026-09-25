@@ -1,6 +1,6 @@
 # Stay or Switch? Strategic Memory Portability in Competing AI Assistants
 
-COMSCI/ECON 206 · Problem Set 2 · Phase 2–4A research artifact
+COMSCI/ECON 206 · Problem Set 2 · Phase 2–4B research artifact
 
 ## Research question
 
@@ -25,11 +25,13 @@ Implemented here:
 - a first-price/second-price allocation application with switching-hurdle reserves;
 - deterministic Phase 3 outputs, figures, tests, and a second executed notebook.
 - a verified literature foundation with claim-level evidence boundaries and
-  citation-ready BibTeX.
+  citation-ready BibTeX;
+- the locally verified *Stay or Switch?* behavioral Space with fixed scenarios,
+  structured reflection, a benchmark reveal, and prior-play aggregates.
 
 Future work not implemented here:
 
-- behavioral experiment or Hugging Face artifact;
+- collection or analysis of exploratory classroom plays;
 - poster, final paper, symposium review, or AI-market empirical validation.
 
 ## Model summary
@@ -158,6 +160,30 @@ other markets is not presented as an AI-market estimate.
 - [Future paper evidence map](docs/paper_evidence_map.md)
 - [Verification log](docs/literature_verification_log.md)
 
+## Behavioral artifact
+
+[*Stay or Switch?*](behavioral_space/) adds the human-decision layer to the
+project. It asks whether a hypothetical user switches when a simplified
+benchmark says the normalized benefit exceeds the normalized hurdle, after
+first recording an unaided decision and four reflection ratings.
+
+Run it locally from `ps2_memory_portability/behavioral_space/`:
+
+```bash
+conda run -n cs206-ps2 python app.py
+```
+
+**Status:** Implemented and locally verified; public deployment pending; no
+participant evidence collected.
+
+This is an exploratory classroom demonstration, not a representative or
+causal study. Parameters are normalized assumptions, differences from the
+benchmark are not automatically irrational or biased, and the app uses only a
+thread-safe process-memory aggregate that resets on restart. See the
+[artifact specification](docs/behavioral_artifact_specification.md),
+[evidence boundary](docs/behavioral_evidence_boundary.md), and
+[deployment guide](docs/hf_deployment.md).
+
 ## Directory structure
 
 ```text
@@ -171,6 +197,9 @@ ps2_memory_portability/
 │   ├── phase3_open_questions.md
 │   ├── phase3_model_specification.md
 │   ├── auction_boundary.md
+│   ├── behavioral_artifact_specification.md
+│   ├── behavioral_evidence_boundary.md
+│   ├── hf_deployment.md
 │   ├── literature_review.md
 │   ├── literature_evidence_matrix.csv
 │   ├── claim_source_map.md
@@ -181,6 +210,13 @@ ps2_memory_portability/
 ├── notebooks/
 │   ├── 01_memory_portability_bayesian_game.ipynb
 │   └── 02_social_choice_mechanism_auction.ipynb
+├── behavioral_space/
+│   ├── app.py
+│   ├── core.py
+│   ├── store.py
+│   ├── ui_text.py
+│   ├── requirements.txt
+│   └── README.md
 ├── src/memory_portability/
 │   ├── __init__.py
 │   ├── model.py
@@ -195,12 +231,15 @@ ps2_memory_portability/
 │   ├── execute_notebook.py
 │   ├── run_phase3.py
 │   ├── build_phase3_notebook.py
-│   └── execute_phase3_notebook.py
+│   ├── execute_phase3_notebook.py
+│   ├── run_behavioral_validation.py
+│   └── deploy_behavioral_space.py
 ├── tests/
 │   ├── test_model.py
 │   ├── test_social_choice.py
 │   ├── test_mechanism.py
-│   └── test_auction.py
+│   ├── test_auction.py
+│   └── test_behavioral_space.py
 ├── outputs/
 └── figures/
 ```
@@ -288,6 +327,10 @@ conda run -n cs206-ps2 python scripts/execute_phase3_notebook.py
 - `outputs/auction_summary.csv`: four-condition allocation, payment, utility, and efficiency summary.
 - `outputs/auction_validation.json`: seed, assumptions, analytical comparisons, and revenue gaps.
 - `outputs/auction_simulation_sample.csv`: deterministic 400-row validation sample.
+- `outputs/behavioral_scenario_catalog.csv`: the 12 predetermined scenario
+  definitions; this is not participant data.
+- `outputs/behavioral_validation.json`: design, environment, smoke-test, and
+  deployment validation metadata; this is not participant data.
 - `figures/social_welfare_by_m.png`: welfare comparison with equilibrium labels.
 - `figures/pl_equilibrium_region_with_incentive.png`: computed `PL` region and both type boundaries.
 - `figures/ll_equilibrium_region_with_incentive.png`: persistence of lock-in under incentives.
@@ -325,6 +368,8 @@ AI/Codex assistance includes code implementation, debugging, mathematical and co
 The social-choice, mechanism-design, and auction decisions formerly listed as
 open Phase 3 questions are implemented under the explicit normalized
 assumptions above, and the Phase 4A literature foundation is verified and
-documented. Remaining work includes a separate Hugging Face behavioral
-artifact, the paper, poster, and symposium review materials. None of that
-remaining work is represented as complete here.
+documented. The behavioral artifact is implemented and locally verified, but
+no participant evidence has been collected. Remaining work includes optional
+exploratory classroom plays, the paper, author notes or appendices, A0 poster,
+symposium materials, and cross-artifact verification. None of that remaining
+work is represented as complete here.

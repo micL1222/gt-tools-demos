@@ -81,10 +81,18 @@ artifacts that make those results auditable.
   persistence beyond technical switching cost.
 - **Our result:** **NOT YET COLLECTED.** No participant behavior or AI-user
   response is available.
-- **Artifact evidence:** None. The Hugging Face Stay/Switch artifact is planned.
+- **Artifact evidence:** Behavioral artifact implemented and locally verified;
+  public deployment pending. The predetermined
+  [`behavioral_scenario_catalog.csv`](../outputs/behavioral_scenario_catalog.csv),
+  [`behavioral_validation.json`](../outputs/behavioral_validation.json),
+  [artifact specification](behavioral_artifact_specification.md), and
+  [evidence boundary](behavioral_evidence_boundary.md) make the design and
+  technical status auditable; none is participant evidence.
 - **Permitted wording:** “Status-quo bias motivates testing whether observed
   Stay/Switch decisions depart from a simplified switching-cost benchmark.”
 - **Prohibited wording:** “Our participants exhibit status-quo bias.”
+- **Current status wording:** “Implemented and locally verified; public
+  deployment pending; no participant evidence collected.”
 
 ## Limitations and Real-World Impact
 

@@ -1,0 +1,13 @@
+scenario_id,portability_condition,condition_description_short,normalized_benefit,normalized_hurdle,benchmark_net_advantage,benchmark_prediction
+FULL_015,Full,Core personalization transfers with high fidelity.,0.15,0.2,-0.05,Stay
+FULL_030,Full,Core personalization transfers with high fidelity.,0.3,0.2,0.1,Switch
+FULL_045,Full,Core personalization transfers with high fidelity.,0.45,0.2,0.25,Switch
+FULL_060,Full,Core personalization transfers with high fidelity.,0.6,0.2,0.4,Switch
+PARTIAL_015,Partial,Some memory transfers; some personalization must be rebuilt.,0.15,0.35,-0.2,Stay
+PARTIAL_030,Partial,Some memory transfers; some personalization must be rebuilt.,0.3,0.35,-0.05,Stay
+PARTIAL_045,Partial,Some memory transfers; some personalization must be rebuilt.,0.45,0.35,0.1,Switch
+PARTIAL_060,Partial,Some memory transfers; some personalization must be rebuilt.,0.6,0.35,0.25,Switch
+NONE_015,None,Personalization does not meaningfully transfer.,0.15,0.5,-0.35,Stay
+NONE_030,None,Personalization does not meaningfully transfer.,0.3,0.5,-0.2,Stay
+NONE_045,None,Personalization does not meaningfully transfer.,0.45,0.5,-0.05,Stay
+NONE_060,None,Personalization does not meaningfully transfer.,0.6,0.5,0.1,Switch
