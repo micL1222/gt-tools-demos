@@ -1,6 +1,6 @@
 # Stay or Switch? Strategic Memory Portability in Competing AI Assistants
 
-COMSCI/ECON 206 · Problem Set 2 · Phase 2–3 computational artifact
+COMSCI/ECON 206 · Problem Set 2 · Phase 2–4A research artifact
 
 ## Research question
 
@@ -24,11 +24,13 @@ Implemented here:
 - a verified portability-incentive extension with exhaustive pure-BNE checks;
 - a first-price/second-price allocation application with switching-hurdle reserves;
 - deterministic Phase 3 outputs, figures, tests, and a second executed notebook.
+- a verified literature foundation with claim-level evidence boundaries and
+  citation-ready BibTeX.
 
 Future work not implemented here:
 
 - behavioral experiment or Hugging Face artifact;
-- literature verification, poster, final paper, symposium review, or empirical claims.
+- poster, final paper, symposium review, or AI-market empirical validation.
 
 ## Model summary
 
@@ -140,6 +142,22 @@ equivalence; portability's central modeled effect is the lower reserve and
 higher feasible-allocation probability. The user is not literally auctioned.
 See `docs/auction_boundary.md`.
 
+## Literature foundation
+
+The literature foundation connects the project to four focused areas:
+switching costs and lock-in; data portability, interoperability, and strategic
+compatibility choice; behavioral status quo bias; and standard auction and
+mechanism-design benchmarks. Compatibility is treated as an analogue to memory
+portability rather than the same technical object, and empirical evidence from
+other markets is not presented as an AI-market estimate.
+
+- [Structured literature review](docs/literature_review.md)
+- [Claim-level evidence matrix](docs/literature_evidence_matrix.csv)
+- [Verified BibTeX library](references/references.bib)
+- [Claim–source map](docs/claim_source_map.md)
+- [Future paper evidence map](docs/paper_evidence_map.md)
+- [Verification log](docs/literature_verification_log.md)
+
 ## Directory structure
 
 ```text
@@ -152,7 +170,14 @@ ps2_memory_portability/
 │   ├── reproducibility.md
 │   ├── phase3_open_questions.md
 │   ├── phase3_model_specification.md
-│   └── auction_boundary.md
+│   ├── auction_boundary.md
+│   ├── literature_review.md
+│   ├── literature_evidence_matrix.csv
+│   ├── claim_source_map.md
+│   ├── paper_evidence_map.md
+│   └── literature_verification_log.md
+├── references/
+│   └── references.bib
 ├── notebooks/
 │   ├── 01_memory_portability_bayesian_game.ipynb
 │   └── 02_social_choice_mechanism_auction.ipynb
@@ -298,7 +323,8 @@ AI/Codex assistance includes code implementation, debugging, mathematical and co
 ## Remaining work
 
 The social-choice, mechanism-design, and auction decisions formerly listed as
-open Phase 3 questions are now implemented under the explicit normalized
-assumptions above. Remaining work includes literature verification, a separate
-Hugging Face behavioral artifact, the paper, poster, and symposium review
-materials. None is represented as complete here.
+open Phase 3 questions are implemented under the explicit normalized
+assumptions above, and the Phase 4A literature foundation is verified and
+documented. Remaining work includes a separate Hugging Face behavioral
+artifact, the paper, poster, and symposium review materials. None of that
+remaining work is represented as complete here.
