@@ -95,7 +95,7 @@ setText("project-title", "Stay or Switch? Strategic Memory Portability\nin Compe
   color: BLUE,
   lineSpacing: 0.91,
 });
-setText("authors", "Yiqiao Liu (Mickey), solo team, course code pending", {
+setText("authors", "Yiqiao Liu (Mickey), solo team, Team FP10", {
   fontSize: 48,
   bold: true,
   color: INK,

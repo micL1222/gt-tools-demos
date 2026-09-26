@@ -6,6 +6,12 @@ This audit checks the official-template paper against repository snapshot
 `f9523b0fdd3f5dc4739dd1f08fe1265e049c1271`. It is a technical and evidentiary
 check, not peer review or participant evidence.
 
+Official team code: FP10
+
+Final paper: `submission/PS2-FP10-StayOrSwitch.pdf`
+
+Final Overleaf source: `submission/PS2-FP10-StayOrSwitch-Overleaf-Source.zip`
+
 ## Claim parity
 
 | Paper claim | Repository evidence | Audit result |
@@ -64,14 +70,14 @@ project-generated equilibria.
   into a clean temporary directory. Both `main.tex` and `annotated.tex`
   compiled there to 7-page PDFs with resolved references and no overfull boxes.
 - PS2 regression command was rerun from `ps2_memory_portability/`: 85 tests
-  passed in 1.317 seconds; 0 failures, errors, or skips.
+  passed in 1.873 seconds; 0 failures, errors, or skips.
 - Review-ready PDF SHA-256:
-  `9384531b9204b3f2fd8a9db2628a8fbd799715e2abf57875106b1fb451fa191f`.
+  `01604ed055d3d835566aec2ac67957803d8666345ed85e9e2671ddecd10e6966`.
 - Overleaf source ZIP SHA-256:
-  `dabae0e8ff67112d3759d7f2485e081985d26486cac41ccd5cf4d996e5260520`.
+  `6406aeb0aad8c99556a07076c842f15e2cfdcb493f23ebf711a3a409e3ed1322`.
 
 ## Manual facts still required
 
-The course team code, symposium session, finished A0 poster reference, and
-post-September-28 evidence remain pending. See
+The official team code is FP10. The symposium session, finished A0 poster
+reference, and post-September-28 evidence remain pending. See
 `paper/MANUAL_INPUTS_REQUIRED.md`.
