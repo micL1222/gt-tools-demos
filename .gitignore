@@ -9,5 +9,6 @@ game_exports/
 outputs/jupyter_run/
 node_modules/
 dist/
+.validation/
 outputs/three_lens_desktop.png
 outputs/three_lens_mobile.png
