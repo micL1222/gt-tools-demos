@@ -3,28 +3,44 @@
   "benchmark_rule": "Switch iff g > r; Stay iff g < r; no equality cases",
   "benchmark_stay_count": 6,
   "benchmark_switch_count": 6,
-  "benefit_levels": [
-    0.15,
-    0.3,
-    0.45,
-    0.6
-  ],
+  "benefit_levels": [0.15, 0.3, 0.45, 0.6],
   "condition_count": 3,
   "contains_participant_data": false,
   "deployed_revision": null,
-  "deployment_status": "failed",
+  "deployment_status": "failed_gradio_compute_hosting",
   "free_text_policy": "Optional, maximum 300 characters, session-only, never aggregated or persisted",
+  "gradio_prototype": {
+    "deployment_attempt_status": "failed_http_402_paid_compute_requirement",
+    "gradio_version": "6.28.0",
+    "local_smoke_test_status": "passed",
+    "peer_aggregation_scope": "prior anonymous plays in the current server runtime",
+    "python_version": "3.12.14",
+    "status": "locally_verified"
+  },
   "gradio_version": "6.28.0",
   "hugging_face_space_url": null,
-  "hurdle_mapping": {
-    "Full": 0.2,
-    "None": 0.5,
-    "Partial": 0.35
-  },
+  "hurdle_mapping": {"Full": 0.2, "None": 0.5, "Partial": 0.35},
   "local_smoke_test_status": "passed",
   "peer_aggregation_policy": "Same-condition and overall summaries use prior anonymous plays only; current play is added after the snapshot; raw rows are never displayed",
   "privacy_storage_policy": "Thread-safe process-memory aggregate only; no persistent participant-data backend",
   "python_version": "3.12.14",
   "scenario_count": 12,
-  "validation_timestamp_utc": "2026-09-25T14:50:22.855155+00:00"
+  "static_variant": {
+    "browser_interaction_smoke_test": "passed for FULL_030 initial decision, reflection validation, benchmark reveal, final submission, and new scenario reset",
+    "external_analytics": false,
+    "external_behavioral_endpoint": false,
+    "files_present": ["README.md", "index.html", "styles.css", "app.js", "scenarios.json"],
+    "html_static_server_smoke_test": "passed",
+    "javascript_syntax_check": "passed with Node v22.22.2",
+    "manual_public_deployment_status": "pending_manual_upload",
+    "persistence_backend": "none",
+    "peer_aggregation_scope": "prior anonymous plays in the current browser page session",
+    "scenario_parity_with_canonical_csv": "passed",
+    "scenario_count": 12,
+    "status": "deployment_ready",
+    "benchmark_stay_count": 6,
+    "benchmark_switch_count": 6,
+    "storage_scope": "JavaScript memory only; refresh and close reset state"
+  },
+  "validation_timestamp_utc": "2026-09-26T03:41:53Z"
 }

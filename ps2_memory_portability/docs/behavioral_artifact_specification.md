@@ -116,3 +116,18 @@ other preferences. Anonymous plays are not independent participants when a
 person can play repeatedly. Runtime aggregates reset on restart and do not
 support population inference, causal effects, actual switching-cost estimates,
 willingness-to-pay estimates, or claims about real platform behavior.
+
+## Static deployment variant
+
+The original Gradio prototype remains the locally verified design reference: it
+uses a thread-safe process-memory aggregate shared by users of that server
+runtime. The separate free Static Space preserves the same 12 scenarios,
+benchmark rule, decision flow, reflection measures, text safeguards, and
+evidence claims, but has no server runtime.
+
+Its equivalent aggregate is an in-memory JavaScript array scoped only to the
+currently open browser page. It snapshots prior plays before adding the current
+one, but cannot combine plays across browsers or devices. Refreshing or closing
+the page clears the aggregate and all optional text. This hosting change does
+not change the scenario design, benchmark, or interpretation of any future
+plays.

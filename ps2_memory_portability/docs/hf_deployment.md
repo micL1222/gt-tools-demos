@@ -1,6 +1,6 @@
 # Hugging Face Deployment Guide
 
-## Artifact location and environment
+## Original approach: Gradio prototype
 
 - Local path: `ps2_memory_portability/behavioral_space/`
 - Conda environment: `cs206-ps2`
@@ -20,7 +20,7 @@ The Space upload must contain only `app.py`, `core.py`, `store.py`,
 `ui_text.py`, `requirements.txt`, and `README.md`. Do not upload the course
 repository, outputs, tests, credentials, runtime data, or Git history.
 
-## Authentication and deployment status
+## Hosting blocker
 
 Local imports, callback validation, the 76-test suite, and the HTTP smoke test
 passed on 2026-09-25. The subsequent credential check reported an authenticated
@@ -29,56 +29,32 @@ repository.
 
 Deployment was attempted on 2026-09-25 and stopped at repository creation with
 HTTP 402. Hugging Face reported that Gradio and Docker Spaces on the free
-`cpu-basic` tier require a PRO subscription. No Space repository was created,
-so there is no Space URL, build status, or deployed revision to report.
+`cpu-basic` tier require a paid plan. No Space repository was created, so there
+is no Space URL, build status, or deployed revision to report.
 
-To retry, enable a Hugging Face plan that permits Gradio Space creation for the
-authenticated namespace, confirm `hf auth whoami`, and run:
+## Chosen fallback: free Static Space
 
-```bash
-conda run -n cs206-ps2 python \
-  ps2_memory_portability/scripts/deploy_behavioral_space.py
-```
+The project deliberately does not use a paid compute plan. The new
+`behavioral_static_space/` package is a zero-build HTML, CSS, and vanilla
+JavaScript upload package for a manually created Hugging Face **Static** Space.
+Its manual upload procedure is in [hf_static_deployment.md](hf_static_deployment.md).
 
-## Reproducible deployment method
+## Behavioral difference
 
-Authenticate using the Hugging Face CLI credential store if needed:
+The Gradio prototype's process-memory aggregate could be shared by users of
+the same server runtime. A free Static Space has no backend, so its peer
+comparison is deliberately limited to prior anonymous plays in the current
+browser page session. It never combines responses across browsers or devices,
+and refresh or close clears that in-memory history.
 
-```bash
-conda run -n cs206-ps2 hf auth login
-```
+## Original runtime behavior
 
-Check authentication without printing a token:
+The original peer aggregate is deliberately memory-only. A Space rebuild,
+restart, sleep/wake cycle, or process replacement clears all prior-play
+statistics. This history is preserved for methodological transparency; the
+Gradio prototype remains a locally verified reproducibility artifact.
 
-```bash
-conda run -n cs206-ps2 hf auth whoami
-```
-
-Deployment uses `huggingface_hub.HfApi`: verify the namespace, check whether
-the intended repository already exists, create a Gradio Space only when safe,
-and upload the six-file manifest above. Never embed a token in code or a shell
-command.
-
-After authentication, deploy or retry with:
-
-```bash
-conda run -n cs206-ps2 python \
-  ps2_memory_portability/scripts/deploy_behavioral_space.py
-```
-
-The deployment script refuses to overwrite an existing Space unless its README
-contains this project's marker and it contains no unexpected files. A different
-clear slug can be supplied with `--slug` if the intended slug belongs to an
-unrelated project.
-
-## Runtime behavior
-
-The peer aggregate is deliberately memory-only. A Space rebuild, restart,
-sleep/wake cycle, or process replacement clears all prior-play statistics. This
-is expected, is shown in the UI, and is preferable to silently persisting
-classroom responses.
-
-## Verification requirements
+## Historical verification requirements
 
 A successful upload alone is insufficient. Deployment is complete only after:
 

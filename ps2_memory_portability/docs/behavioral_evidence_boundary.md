@@ -58,6 +58,14 @@ response rows or reflection text.
 The app explicitly disables Gradio telemetry and the Gradio monitoring
 endpoint. It adds no analytics tracker or custom cookie.
 
+## Static deployment variant
+
+The free Static Space is a client-side counterpart to the Gradio prototype. It
+has no server runtime, backend, or shared response store. Public Static
+deployment does not create a shared behavioral dataset. Any peer comparison is
+local to the current browser page session and disappears on refresh or close.
+It does not combine responses across devices or browsers.
+
 Hosting and framework infrastructure may process ordinary HTTP requests to
 serve the application, but the application code does not use those requests to
 create identifiers or behavioral records beyond the structured fields listed

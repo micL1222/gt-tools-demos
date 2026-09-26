@@ -81,9 +81,9 @@ artifacts that make those results auditable.
   persistence beyond technical switching cost.
 - **Our result:** **NOT YET COLLECTED.** No participant behavior or AI-user
   response is available.
-- **Artifact evidence:** Behavioral artifact implemented and locally verified;
-  public deployment was attempted but blocked by Hugging Face's hosting-plan
-  requirement for Gradio Spaces. The predetermined
+- **Artifact evidence:** Behavioral artifact implemented in a locally verified
+  Gradio prototype and converted to a free Static Space package; local/static
+  validation complete and manual public upload pending. The predetermined
   [`behavioral_scenario_catalog.csv`](../outputs/behavioral_scenario_catalog.csv),
   [`behavioral_validation.json`](../outputs/behavioral_validation.json),
   [artifact specification](behavioral_artifact_specification.md), and
@@ -92,9 +92,10 @@ artifacts that make those results auditable.
 - **Permitted wording:** “Status-quo bias motivates testing whether observed
   Stay/Switch decisions depart from a simplified switching-cost benchmark.”
 - **Prohibited wording:** “Our participants exhibit status-quo bias.”
-- **Current status wording:** “Implemented and locally verified; public
-  deployment is blocked by the current hosting-plan requirement; no participant
-  evidence collected.”
+- **Current status wording:** “Behavioral artifact implemented in Gradio and
+  converted to a free Static Space package; local/static validation complete;
+  manual public deployment pending; no participant behavioral conclusions
+  claimed.”
 
 ## Limitations and Real-World Impact
 

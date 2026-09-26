@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A privacy-conscious behavioral demonstration of AI memory portability and switching decisions.">
+    <title>Stay or Switch?</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main id="main-content" class="page-shell">
+      <header class="page-header">
+        <p class="eyebrow">COMSCI/ECON 206 · Behavioral demonstration</p>
+        <h1>Stay or Switch?</h1>
+        <p class="subtitle">A behavioral demonstration of AI memory portability and switching decisions</p>
+      </header>
+
+      <section class="notice evidence-boundary" aria-labelledby="boundary-title">
+        <h2 id="boundary-title">Evidence Boundary</h2>
+        <p>This is an exploratory classroom demonstration, not a representative or causal study of AI-assistant users. Its numerical benefits and hurdles are normalized parameters, not estimates for real platforms. A decision that differs from the benchmark is not automatically irrational or biased.</p>
+      </section>
+
+      <section class="card" aria-labelledby="scenario-title">
+        <p class="step-label">Your scenario</p>
+        <h2 id="scenario-title">Imagine a possible switch</h2>
+        <p>Imagine that you have used <strong>Assistant A for two years</strong>. It has learned your writing preferences, recurring projects, and interaction habits.</p>
+        <p>Assistant B offers a normalized expected benefit of <strong id="benefit-value"></strong> compared with staying on A. This may represent expected quality, usefulness, or fit; it is not a dollar estimate or a real-product claim.</p>
+        <p>Your memory-portability condition is <strong id="condition-value"></strong>.</p>
+        <p id="condition-description"></p>
+        <p class="muted">Make your own decision first. A simplified benchmark will be revealed after your initial decision and reflection are recorded.</p>
+      </section>
+
+      <section class="card" aria-labelledby="initial-title">
+        <p class="step-label">Step 1</p>
+        <h2 id="initial-title">What would you do?</h2>
+        <fieldset id="initial-decision-fieldset">
+          <legend>Initial decision</legend>
+          <label><input type="radio" name="initial-choice" value="Stay"> Stay with Assistant A</label>
+          <label><input type="radio" name="initial-choice" value="Switch"> Switch to Assistant B</label>
+        </fieldset>
+      </section>
+
+      <section class="card" aria-labelledby="reflection-title">
+        <p class="step-label">Step 2</p>
+        <h2 id="reflection-title">Self-reflection</h2>
+        <div class="rating-grid">
+          <fieldset id="difficulty-fieldset">
+            <legend>How difficult would switching feel to you in this scenario?</legend>
+            <p class="scale-note">1 = Very easy · 7 = Very difficult</p>
+            <div class="rating-options" data-rating="difficulty"></div>
+          </fieldset>
+          <fieldset id="personalization-fieldset">
+            <legend>How concerned would you be about losing or rebuilding personalization?</legend>
+            <p class="scale-note">1 = Not concerned · 7 = Very concerned</p>
+            <div class="rating-options" data-rating="personalization"></div>
+          </fieldset>
+          <fieldset id="privacy-fieldset">
+            <legend>How concerned would you be about privacy or data handling during the move?</legend>
+            <p class="scale-note">1 = Not concerned · 7 = Very concerned</p>
+            <div class="rating-options" data-rating="privacy"></div>
+          </fieldset>
+          <fieldset id="trust-fieldset">
+            <legend>How much would you trust the new assistant in this scenario?</legend>
+            <p class="scale-note">1 = Very low trust · 7 = Very high trust</p>
+            <div class="rating-options" data-rating="trust"></div>
+          </fieldset>
+        </div>
+        <label for="initial-reflection">Optional: In one or two sentences, why did you initially choose Stay or Switch?</label>
+        <textarea id="initial-reflection" maxlength="300" rows="3"></textarea>
+        <p class="privacy-note">Optional, maximum 300 characters. Please do not enter your name, email, account details, health information, or other sensitive information.</p>
+        <button id="reveal-button" type="button">Reveal benchmark</button>
+        <p id="initial-error" class="status-message" aria-live="polite"></p>
+      </section>
+
+      <section id="benchmark-panel" class="card" hidden aria-labelledby="benchmark-title">
+        <p class="step-label">Simplified Benchmark</p>
+        <h2 id="benchmark-title">A comparison point, not a recommendation</h2>
+        <dl class="benchmark-values">
+          <div><dt>Normalized switching benefit</dt><dd id="benchmark-benefit"></dd></div>
+          <div><dt>Modeled switching hurdle</dt><dd id="benchmark-hurdle"></dd></div>
+          <div><dt>Net benchmark advantage</dt><dd id="benchmark-net"></dd></div>
+          <div><dt>Benchmark prediction</dt><dd id="benchmark-prediction"></dd></div>
+        </dl>
+        <p>Rule: <strong>Switch if g &gt; r; Stay if g &lt; r.</strong></p>
+        <p id="initial-agreement" aria-live="polite"></p>
+        <p class="muted">This is a simplified benchmark, not a recommendation about what you should do. It intentionally ignores trust, privacy preferences, habit, uncertainty, attachment to existing personalization, and other considerations not captured by these two normalized parameters.</p>
+      </section>
+
+      <section id="final-section" class="card" hidden aria-labelledby="final-title">
+        <p class="step-label">Step 3</p>
+        <h2 id="final-title">Your final decision</h2>
+        <fieldset id="final-decision-fieldset">
+          <legend>After seeing the simplified benchmark, what would you choose now?</legend>
+          <label><input type="radio" name="final-choice" value="Stay"> Stay with Assistant A</label>
+          <label><input type="radio" name="final-choice" value="Switch"> Switch to Assistant B</label>
+        </fieldset>
+        <label for="post-reflection">Optional: What mattered most in keeping or changing your decision?</label>
+        <textarea id="post-reflection" maxlength="300" rows="3"></textarea>
+        <p class="privacy-note">Optional, maximum 300 characters. This text remains only in this page's memory and is never included in peer summaries.</p>
+        <button id="submit-button" type="button">Submit decision</button>
+        <p id="final-error" class="status-message" aria-live="polite"></p>
+      </section>
+
+      <section id="peer-panel" class="card" hidden aria-labelledby="peer-title">
+        <p class="step-label">Peer comparison</p>
+        <h2 id="peer-title">Compare with Earlier Anonymous Plays in This Browser Session</h2>
+        <p id="peer-intro" aria-live="polite"></p>
+        <div id="peer-summaries"></div>
+        <p class="muted">Because this free Static Space has no shared backend, peer summaries include only earlier plays from the current browser session. They do not combine responses across different devices or browsers.</p>
+      </section>
+
+      <section id="next-actions" class="actions" hidden aria-label="Next actions">
+        <button id="new-scenario-button" type="button">Try another scenario</button>
+        <button id="clear-history-button" class="secondary-button" type="button">Clear browser-session peer history</button>
+        <p id="history-status" class="status-message" aria-live="polite"></p>
+      </section>
+
+      <details class="card">
+        <summary>How this demo works</summary>
+        <p>The demo samples uniformly from 12 fixed scenarios: Full, Partial, and None portability crossed with normalized benefits of 0.15, 0.30, 0.45, and 0.60. The corresponding hurdles are 0.20, 0.35, and 0.50, with no equality cases.</p>
+        <p>The initial choice and four 1–7 reflection ratings are recorded before the benchmark is shown. The benchmark predicts Switch if <code>g &gt; r</code> and Stay if <code>g &lt; r</code>. A final decision can then be submitted once.</p>
+        <p>Because this free Static Space has no shared backend, peer summaries include only earlier plays from the current browser session. They do not combine responses across different devices or browsers. No server-side response storage is used.</p>
+      </details>
+
+      <details class="card">
+        <summary>Connection to the Research Model</summary>
+        <p>The Bayesian model asks whether platforms strategically supply portability. The auction extension models portability as lowering switching friction. This behavioral artifact asks a distinct question: when modeled technical friction changes, does a hypothetical user choose to switch?</p>
+        <p>The layers are linked but distinct. This demonstration does not validate the Bayesian equilibrium model, and deployment alone is not behavioral evidence.</p>
+      </details>
+
+      <details class="card">
+        <summary>Full evidence boundary and privacy policy</summary>
+        <p>This Space is a classroom behavioral demonstration linked to a computational-microeconomics proposal. Responses are exploratory plays, not a representative sample of AI-assistant users, and the demo cannot establish population-level effects or causal relationships.</p>
+        <p>Numerical switching benefits and hurdles are normalized experimental parameters, not empirical estimates of real AI platforms. A Stay/Switch decision that differs from the benchmark is not automatically evidence of irrationality or status-quo bias; the benchmark omits many real preferences and risks.</p>
+        <p>This free Static Space has no shared behavioral-data backend. Peer summaries refer only to earlier plays in the current browser session. The app does not collect names, email addresses, account histories, IP addresses, device fingerprints, or sensitive personal information.</p>
+      </details>
+    </main>
+    <section id="configuration-error" class="page-shell error-panel" hidden aria-live="assertive">
+      <h1>Configuration error</h1>
+      <p id="configuration-error-message"></p>
+    </section>
+    <script src="./app.js"></script>
+  </body>
+</html>

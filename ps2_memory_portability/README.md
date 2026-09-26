@@ -173,9 +173,12 @@ Run it locally from `ps2_memory_portability/behavioral_space/`:
 conda run -n cs206-ps2 python app.py
 ```
 
-**Status:** Implemented and locally verified; public deployment is blocked by
-Hugging Face's PRO requirement for Gradio Spaces on `cpu-basic`; no participant
-evidence has been collected.
+**Status:**
+
+- Gradio prototype: locally verified.
+- Free Static Space version: deployment-ready.
+- Public Static URL: pending manual upload.
+- Behavioral evidence: not yet analyzed.
 
 This is an exploratory classroom demonstration, not a representative or
 causal study. Parameters are normalized assumptions, differences from the
@@ -183,7 +186,8 @@ benchmark are not automatically irrational or biased, and the app uses only a
 thread-safe process-memory aggregate that resets on restart. See the
 [artifact specification](docs/behavioral_artifact_specification.md),
 [evidence boundary](docs/behavioral_evidence_boundary.md), and
-[deployment guide](docs/hf_deployment.md).
+[Gradio deployment history](docs/hf_deployment.md), [Static deployment guide](docs/hf_static_deployment.md),
+and [manual test checklist](docs/static_behavioral_manual_test.md).
 
 ## Directory structure
 
