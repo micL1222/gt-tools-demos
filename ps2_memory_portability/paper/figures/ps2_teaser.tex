@@ -1,0 +1,38 @@
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[x=1pt,y=1pt,font=\sffamily,>=Latex]
+\tikzset{
+  heading/.style={font=\bfseries\fontsize{17}{19}\selectfont,text=CourseInk,align=center},
+  label/.style={font=\fontsize{11}{13}\selectfont,text=CourseInk,align=center},
+  mini/.style={draw=CourseBlue,line width=0.9pt,minimum width=70pt,minimum height=34pt,align=center,text=CourseInk,fill=white,font=\fontsize{10}{12}\selectfont},
+  synthesis/.style={draw=CourseTeal,line width=1.1pt,minimum width=790pt,minimum height=47pt,align=center,text=CourseInk,fill=CourseTeal!3}
+}
+\node[heading] at (140,170) {Economics};
+\node[label] at (140,145) {Private costs and strategic portability};
+\node[mini] (e1) at (65,103) {two platforms\\types $c_L,c_H$};
+\node[mini] (e2) at (140,103) {actions $P/L$\\Bayesian game};
+\node[mini] (e3) at (215,103) {multiple BNE\\welfare gap};
+\draw[CourseBlue,-{Latex[length=7pt]}] (e1)--(e2);
+\draw[CourseBlue,-{Latex[length=7pt]}] (e2)--(e3);
+
+\node[heading] at (455,170) {Computer science};
+\node[label] at (455,145) {Exhaustive and reproducible verification};
+\node[mini] (c1) at (380,103) {16 profiles\\PyGambit};
+\node[mini] (c2) at (455,103) {sweeps\\incentive $\tau$};
+\node[mini] (c3) at (530,103) {auction sim\\85/85 tests};
+\draw[CourseBlue,-{Latex[length=7pt]}] (c1)--(c2);
+\draw[CourseBlue,-{Latex[length=7pt]}] (c2)--(c3);
+
+\node[heading] at (770,170) {Behavioral science};
+\node[label] at (770,145) {Bounded user-level decision evidence};
+\node[mini] (b1) at (695,103) {12 fixed\\scenarios};
+\node[mini] (b2) at (770,103) {choice +\\reflection};
+\node[mini] (b3) at (845,103) {benchmark reveal\\no inference yet};
+\draw[CourseBlue,-{Latex[length=7pt]}] (b1)--(b2);
+\draw[CourseBlue,-{Latex[length=7pt]}] (b2)--(b3);
+
+\node[synthesis] (s) at (455,35) {\textbf{\fontsize{16}{18}\selectfont Interdisciplinary result: availability, welfare, and use can diverge}\\[3pt]
+\fontsize{11}{13}\selectfont GitHub verifies multiplicity and policy comparisons $\cdot$ Hugging Face structures a bounded future test $\cdot$ A0 communication remains planned};
+\draw[CourseTeal,dashed,-{Latex[length=8pt]}] (140,76)--(220,59);
+\draw[CourseTeal,dashed,-{Latex[length=8pt]}] (455,76)--(455,59);
+\draw[CourseTeal,dashed,-{Latex[length=8pt]}] (770,76)--(690,59);
+\end{tikzpicture}}

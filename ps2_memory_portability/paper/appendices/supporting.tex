@@ -1,0 +1,176 @@
+\clearpage\nobalance
+\section*{Author Notes}
+\subsection*{Acknowledgements}
+\textbf{Course instructor: Professor Luyao Zhang.} The author acknowledges the official COMSCI/ECON 206 PS2 Overleaf Student Template, the open-source Python and LaTeX tools identified in Appendix~C, and permitted assistance from OpenAI Codex as disclosed in Appendix~A.1. No PS2 peer, discussant, symposium, community-partner, or classroom-auction contribution had been received by this review-ready version; none is invented or attributed. The author remains responsible for the proposal and remaining errors.
+
+\subsection*{Team and individual contributions}
+\textbf{Joint contribution statement (solo team; 124 words).} This solo project links a static Bayesian game of privately costly memory portability to three inspectable extensions: a cardinal social-welfare comparator, a verified-portability incentive, and a reserve-based platform-allocation analogy. Its contribution is the separation of three questions often conflated in portability debates: whether firms strategically supply portability, whether modeled outcomes rank differently under a stated collective objective, and whether users switch when technical friction falls. Reproducible enumeration, PyGambit agreement, deterministic sweeps, seeded auction simulation, and 85 automated tests verify the formal claims. A public Static Space implements twelve hypothetical Stay/Switch scenarios while explicitly providing no persistent participant dataset. The paper therefore offers an integrated, falsifiable research design and public artifacts, not an empirical claim about firms, users, welfare, or status-quo bias.
+
+\textbf{Yiqiao Liu (Mickey), sole and first author.} Liu selected the memory-portability question; approved the private-cost Bayesian structure, normalized payoffs, welfare objective, verified-portability intervention, auction mapping, and behavioral evidence boundary; and is accountable for interpreting every result. Inspectable outputs are in \url{ps2_memory_portability/}, especially the two notebooks, \url{outputs/}, the public Space, and this paper source. Verification includes direct/PyGambit agreement, analytical thresholds, scenario parity, public deployment checks, 85/85 tests, and LaTeX/PDF audits. The next responsibility is to confirm the course team code and symposium session, create the A0 poster from its official template, obtain genuine September 28 reviews, and record Keep/Revise/Investigate decisions without delegating personal reflection to AI.
+
+\bibliographystyle{ACM-Reference-Format}\bibliography{references}
+
+\appendix
+\section{Technical details and reproducibility}
+\label{app:technical}
+\subsection{Model, timing, and type-level verification}
+Platforms $A,B$ independently draw $c_i\in\{.2,1.2\}$ with $\Pr(c_i=.2)=.7$, observe only their own type, and simultaneously choose $P$ or $L$. Normalized own payoff is $2-c_i$ under $(P,P)$, $-1-c_i$ under $(P,L)$, $1$ under $(L,P)$, and $0$ under $(L,L)$. Thus
+\[
+\begin{aligned}
+EU(P\mid c)&=3q-1-c, & EU(L\mid c)&=q,\\
+P\in BR(c)&\Longleftrightarrow 2q-1\ge c.&&
+\end{aligned}
+\]
+A pure strategy is a complete type map in $\{LL,PL,LP,PP\}$. The checker evaluates every type of both players in all 16 profiles; zero-probability endpoints are excluded from the full-support sweep.
+
+\begin{table}[h]
+\caption{Predetermined parameters and evidence status.}
+\begin{tabularx}{\columnwidth}{@{}p{2.3cm}Y@{}}\toprule
+\textbf{Component}&\textbf{Value and status}\\\midrule
+Platform benchmark&$c_L=.2,c_H=1.2,p=.7$; normalized, not estimated.\\
+Pure BNE&$(LL,LL)$, $(PL,PL)$; no asymmetric pure BNE at benchmark.\\
+Mixed candidate&High types lock; low types use $P$ with $x^*=6/7$.\\
+Social choice&$W=u_A+u_B+U_{user}$; cardinal comparability assumed.\\
+Mechanism&$EU_\tau(P\mid c)=3q-1-c+\tau$; mechanism cost unmodeled.\\
+Auction&$N=100{,}000$, seed 20603, iid $U[0,1]$, reserves .5/.2.\\
+Behavior&12 fixed scenarios; zero participant-level results.\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Language-independent verification procedure}
+\begin{enumerate}
+\item Load the predetermined cost, prior, mobility, incentive, reserve, and seed values.
+\item For each ordered pair of type-contingent strategies, compute the rival-induced $q$; for each positive-probability type, compare the prescribed action with its deviation. Save every accepted and rejected profile.
+\item Cross-check benchmark pure BNE with a separately constructed PyGambit Harsanyi game; fail if sets differ.
+\item Sweep integer-built $p,c_L,\tau,m$ grids; compare classifications with analytical thresholds before plotting.
+\item Draw one seeded valuation sample; reuse it for first-/second-price and locked/portable conditions; compare simulated $1-r^2$, payment, utility, and efficiency.
+\item Run all tests, execute notebooks from clean kernels, validate the behavioral catalog, and compare paper claims with saved JSON/CSV fields.
+\end{enumerate}
+
+\subsection{Verified outputs and limitations}
+At $m=1$, $W_{LL}=0$, $W_{PL}=2.17$, and $W_{PP}=4$; $PP$ is a comparator, not a Phase 2 BNE. For symmetric $PL$, $p\ge(1+c_L-\tau)/2$, while the high type locks only when $\tau\le1+c_H-2p$. At $p=.4$, the minimum $\tau$ for weak $PL$ is .4. At $p=.7$, $LL$ remains weak through $\tau=1.2$, and $PP$ first appears weakly at $\tau=.2$. No welfare-optimal $\tau$ is claimed.
+
+The auction's analytical allocation probability is $1-r^2$. The saved simulation gives .75193 at $r=.5$ and .96004 at $r=.2$, with absolute errors .00193 and .00004. The same valuation draws are used throughout; 400,000 raw in-memory rows are not committed, and a deterministic 400-row sample is retained. The application does not auction a person, calibrate AI markets, or implement a Myerson-optimal mechanism.
+
+The recorded environment is Python 3.12.14, NumPy 2.3.5, SciPy 1.17.0, pandas 2.2.3, matplotlib 3.10.8, PyGambit 16.7.0, nbformat 5.11.1, nbclient 0.11.0, and ipykernel 7.3.0. Reproduce from repository snapshot \texttt{f9523b0}:
+\begin{verbatim}
+cd ps2_memory_portability
+conda run -n cs206-ps2 python scripts/run_phase2.py
+conda run -n cs206-ps2 python scripts/run_phase3.py
+conda run -n cs206-ps2 python -m unittest \
+  discover -s tests -v
+\end{verbatim}
+Expected test result: 85 passed, 0 skipped, 0 failures, 0 errors. The two tracked notebooks are executed artifacts, not substitutes for the source modules.
+
+The public Static Space revision is \texttt{9ffb3ca} (full revision recorded in the audit). It has no backend, analytics, cookies, or persistent browser storage; refreshing or closing clears its page-session aggregate. The review-ready A0 poster does not yet exist and is not misreported as an output.
+
+\subsection{AI-use disclosure}
+OpenAI Codex (GPT-5 family, September 23--26, 2026) assisted with repository inspection, Python implementation and debugging, test design and execution, notebook and visualization construction, literature-source checking, the Gradio and Static Space artifacts, LaTeX drafting, compilation, and evidence/parity audits. Significant instructions required preserving the research question and official template, separating actual from planned evidence, and prohibiting fabricated author, peer, auction, symposium, and participant records. Suggestions that would overstate empirical evidence, infer missing metadata, or treat the user as literally auctioned were rejected. The author supplied or approved the research direction and remains responsible for every modeling choice, citation, interpretation, and final submission. Automated tests and artifact comparisons are recorded; personal reflection, peer review, and final human approval must be completed by the author.
+
+\section{Cumulative Intellectual Development}
+PS1 studied costly information acquisition before a collective AI decision: two agents chose Research or Skip, producing a free-riding benchmark and a reproducible NashPy check. PS2 does not claim topic continuity. It retains the methodological lesson that strategic interdependence, solution concept, computation, and behavioral evidence must be separated, then applies it to a new shared question: privately costly portability between competing AI assistants.
+
+\begin{table}[h]
+\caption{Dated development record; no peer-review cause is inferred.}
+\begin{tabularx}{\columnwidth}{@{}p{1.6cm}p{1.85cm}Y@{}}\toprule
+\textbf{Date / evidence}&\textbf{Revision}&\textbf{Intellectual consequence}\\\midrule
+PS1 final, Sept. 2026&Costly Research/Skip benchmark with future behavior test&Established model-first and actual/planned evidence discipline.\\
+Sept. 24, commit \texttt{796bee4}&Private-cost $P/L$ Bayesian game&Made implementation cost private and BNE the correct solution concept.\\
+Sept. 24, \texttt{181c840}&Added welfare, $\tau$, and auction comparison&Exposed equilibrium--welfare tension and a bounded policy lever.\\
+Sept. 25, \texttt{7a2e02e}&Verified literature claims&Narrowed compatibility, portability, and status-quo claims to supported analogies.\\
+Sept. 26, \texttt{f9523b0}&Public Static Space verified&Separated technical deployment from participant evidence.\\\bottomrule
+\end{tabularx}
+\end{table}
+
+The author initially focused on whether portability is supplied. The welfare comparison showed that $PP$ can rank highest without being a benchmark equilibrium; the mechanism sweep showed that an incentive can add portability equilibria while lock-in persists; and the behavioral design showed that technical portability does not logically imply user switching. The current integrated claim is therefore conditional: platform adoption, collective desirability, feasible allocation, and user response are distinct propositions requiring distinct evidence.
+
+\section{Open-source and three-lens inspiration}
+\begin{table}[H]
+\caption{Software/source record and design consequence.}
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{1.65cm}p{1.75cm}Y@{}}\toprule
+\textbf{Source / tool}&\textbf{Version / license}&\textbf{Capability, limit, consequence}\\\midrule
+Python ecosystem&Versions in App.~A; upstream licenses apply&Deterministic analysis; package behavior is environment-dependent.\\
+PyGambit&16.7.0; GPL-2.0-or-later&Independent pure-BNE cross-check; direct checker remains authoritative.\\
+Gradio&6.28.0; upstream license&Local prototype; free hosted compute was unavailable, prompting static conversion.\\
+HTML/CSS/JS&Browser-native&Public zero-build artifact; no shared response store.\\
+ACM \texttt{acmart}&Official course-bundled class&Required paper layout; content does not imply ACM publication.\\
+Course repository&Public; no new blanket license grant&Inspectable evidence; public availability is not additional reuse permission.\\\bottomrule
+\end{tabularx}
+\end{table}
+
+The three lenses produce different decisions. Game theory asks which type-contingent strategies survive unilateral deviation. Social choice adds users and a declared collective objective, revealing a contested cardinal-comparability assumption. Mechanism design changes the action payoff through $\tau$, then tests adoption and equilibrium-selection limits. None of these establishes observed firm conduct. The auction comparison tests a separate allocation analogy; the behavioral Space tests a separate user-level decision rule.
+
+Literature is used only for the general mechanisms it supports: switching costs and lock-in~\cite{farrell2007coordination}, strategic compatibility~\cite{jeon2023compatibility}, setting-specific portability competition~\cite{viard2007switching}, security trade-offs~\cite{kim2026portability}, status-quo motivation~\cite{samuelson1988statusquo}, and auction foundations~\cite{vickrey1961counterspeculation,myerson1981optimal}. Their parameters and outcomes are not transferred to AI assistants.
+
+\newpage
+\section{Review response and revision record}
+\label{app:review}
+This document is the review-ready v1 due September 27, before the September 28 symposium. No PS2 peer review, discussant comment, instructor comment, classroom-auction observation, or symposium question had been received when it was compiled. Therefore no substantive Keep/Revise/Investigate decision is attributed to another person. The prior PS1 record concerns a different topic and is historical development evidence, not direct review of this proposal.
+
+\begin{table}[h]
+\caption{Review-ready status; empty evidence is reported, not filled.}
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{1.55cm}p{1.55cm}Y@{}}\toprule
+\textbf{Required record}&\textbf{Current status}&\textbf{Next verified action}\\\midrule
+Review-ready v1&Complete&Retain PDF, ZIP, commit, and audit as baseline.\\
+Two peer reviews&Not yet received&After Sept. 28, record named/dated forms and exact claims.\\
+Discussant / instructor&None received for PS2&Record only comments actually delivered.\\
+Author decision&Pending evidence&Classify each consequential comment Keep, Revise, or Investigate.\\
+Rerun/final v2&Not yet applicable&Rerun affected test and cite changed file/location for Sept. 30.\\\bottomrule
+\end{tabularx}
+\end{table}
+
+The pre-review parity audit did produce author-side corrections: it preserved the two pure-BNE wording, labeled $PP$ a welfare comparator, separated Static page-session aggregation from participant evidence, and labeled the poster and classroom observations as pending. These are verification edits, not peer feedback.
+
+\clearpage\onecolumn
+\section{Structured abstract and cumulative proposal map}\label{app:abstract}
+\begin{table}[H]
+\caption{Appendix E structured abstract; actual and planned evidence remain separate.}
+\label{tab:abstract-map}
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{@{}p{0.27\textwidth}Y@{}}
+\toprule
+\textbf{Proposal element} & \textbf{Current statement / change} \\
+\midrule
+Background & AI assistants accumulate user-specific memory. Switching costs can create lock-in, while firms may make compatibility choices strategically. Existing work does not supply this project's static private-implementation-cost Bayesian result or AI-user evidence. \\
+Motivation and application & A student or writer may want to move long-lived context between assistants. Users, incumbent and entrant platforms, regulators, and institutions face benefits from choice and risks from privacy, incomplete transfer, security, and unequal access. \\
+Three connected questions & Economics asks when portability is a BNE, how it ranks under a collective objective, and how $\tau$ changes incentives. Computation asks whether exhaustive checks and allocation simulations reproduce thresholds. Behavior asks whether users switch when $g>r$. Together: when is portability supplied and practically useful for competitive mobility? \\
+Method and model assumptions & Two privately informed platforms simultaneously choose $P/L$; $c_L=.2,c_H=1.2,p=.7$. Direct enumeration and PyGambit check BNE; deterministic sweeps test welfare and incentive thresholds; a seeded two-bidder allocation analogy compares first and second price at reserves .5/.2; twelve fixed scenarios structure future user evidence. \\
+Results or expected results & \textbf{Actual:} pure BNE $(LL,LL)$, $(PL,PL)$; low-type mix $6/7$; $W_{PP}>W_{PL}>W_{LL}$ on the tested $m$ grid; $\tau$ expands portability equilibria without selecting one; allocation .75193/.96004; 85/85 tests; public Static Space. \textbf{Planned:} participant, classroom-auction, poster, symposium, and causal evidence. \\
+Intellectual merits & The project shows that strategic availability, modeled collective value, feasible allocation, and user adoption are distinct claims. Combining analytical thresholds, exhaustive computation, and a bounded behavioral design prevents one evidence type from standing in for another. \\
+Practical impacts & Potential value is user mobility and contestability; risks include privacy loss, partial transfer, manipulation, and exclusion. No impact is demonstrated. Future evaluation should measure successful transfer, switching, access, and incidents, with user-controlled correction and independent audit. \\
+Feedback received and revision made & No PS2 peer or symposium feedback had been received in review-ready v1. The author-side parity audit narrowed claims, preserved Gradio failure history, recorded successful Static deployment, and marked missing team code, session, poster, classroom play, and future review as pending. The prior PS1 topic is preserved as methodological history, not evidence for PS2. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\noindent The prior PS1 structured abstract concerned costly information acquisition before collective decisions. Its retained methodological lesson is explicit separation of formal prediction, computation, and uncollected behavior; its substantive results are not reused as memory-portability evidence.
+
+\clearpage\twocolumn
+\section{PS2 extension record: auction, linked artifacts, poster, and symposium}
+\subsection{Auction laboratory record}
+The completed evidence is a seeded computational benchmark, not a classroom play. Each treatment uses two iid $U[0,1]$ private platform values, one primary-assistant slot, one sealed bid per platform, Platform A tie-breaking, a reserve, allocation to the highest eligible bid, mechanism-specific payment, and termination after one allocation decision.
+
+\begin{table}[h]
+\caption{Completed simulation treatments; $N=100{,}000$, seed 20603.}
+\begin{tabularx}{\columnwidth}{@{}p{1.15cm}rrrr@{}}\toprule
+&\textbf{$r$}&\textbf{Alloc.}&\textbf{Pay.}&\textbf{Eff.}\\\midrule
+First, locked&.50&.75193&.41788&1.00\\
+First, portable&.20&.96004&.36320&1.00\\
+Second, locked&.50&.75193&.41818&1.00\\
+Second, portable&.20&.96004&.36414&1.00\\\bottomrule
+\end{tabularx}
+\end{table}
+
+First-price eligible bids follow $b(v;r)=(v^2+r^2)/(2v)$; second-price bids equal value. ``Eff.'' is conditional efficiency given allocation. Utilities and conditional payments are preserved in \url{outputs/auction_summary.csv}. \textbf{Classroom record:} no game URL, assigned value/signal, planned bid, actual bid/outcome, payment, utility, revenue, behavioral observation, or resulting revision was available. Those fields must be completed only after genuine play.
+
+\subsection{Linked-artifact parity}
+\begin{tabularx}{\columnwidth}{@{}p{1.55cm}Y@{}}\toprule
+\textbf{Artifact}&\textbf{Verified parity status}\\\midrule
+GitHub&Snapshot \texttt{f9523b0}; same private-cost game, inputs, formulas, outputs, 85 tests, and limitations.\\
+Hugging Face&Same user-level Stay/Switch question, 12 scenarios, $g>r$ rule, no participant conclusion, page-session privacy boundary.\\
+A0 poster&Not yet created. It must reuse the shared question, actual results, real-world case, limits, instructor, acknowledgements, and artifact links; no parity claim is made yet.\\\bottomrule
+\end{tabularx}
+
+\subsection{Symposium and practical-impact record}
+This review-ready package predates the September 28 symposium. No presentation version, peer-evaluation form, question, or Keep/\allowbreak Revise/\allowbreak Investigate response exists yet. For the concrete migration case, affected parties are users, incumbent and entrant assistants, institutions procuring AI, and regulators. Potential benefit is safer competitive mobility; risks are leakage, degraded context, strategic misrepresentation, and inaccessible transfer. Missing evidence includes real implementation costs, security performance, transfer fidelity, switching choices, and distributional effects. Proposed correction routes are user-controlled export/import, data minimization, provenance logs, deletion and rollback, accessibility testing, complaint procedures, and independent audit. The September 30 record must identify every actual change and rerun its affected check.

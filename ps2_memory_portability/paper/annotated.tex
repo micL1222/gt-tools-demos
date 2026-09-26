@@ -1,0 +1,49 @@
+\documentclass[sigconf,nonacm]{acmart}
+\settopmatter{printacmref=false,printfolios=true}
+\setcopyright{none}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\usepackage{amsmath,tabularx,array,enumitem,balance,tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\definecolor{CourseBlue}{HTML}{315EFB}
+\definecolor{CourseTeal}{HTML}{14877D}
+\definecolor{CourseInk}{HTML}{18324A}
+\hypersetup{colorlinks=true,linkcolor=CourseBlue,citecolor=CourseTeal,urlcolor=CourseTeal}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setlist{leftmargin=*,topsep=3pt,itemsep=2pt}
+\newcommand{\CourseNumber}{COMSCI/ECON 206}
+\newcommand{\CourseName}{Computational Microeconomics}
+\newcommand{\CourseSession}{Autumn 2026 Session 1}
+\newcommand{\Instructor}{Professor Luyao Zhang}
+\newcommand{\TeamCode}{Solo; course code pending}
+\newcommand{\SymposiumSession}{Pending course assignment}
+\newcommand{\GitHubLink}{\href{https://github.com/micL1222/gt-tools-demos/tree/f9523b0fdd3f5dc4739dd1f08fe1265e049c1271/ps2_memory_portability}{snapshot \texttt{f9523b0}}}
+\newcommand{\NotebookLink}{\href{https://colab.research.google.com/github/micL1222/gt-tools-demos/blob/f9523b0fdd3f5dc4739dd1f08fe1265e049c1271/ps2_memory_portability/notebooks/02_social_choice_mechanism_auction.ipynb}{Phase 3 Colab}}
+\newcommand{\HuggingFaceLink}{\href{https://huggingface.co/spaces/mickeystk/ps2-stay-or-switch-memory-portability}{public Static Space}}
+\newcommand{\PosterLink}{Planned; no result claimed}
+\newcommand{\coursemeta}{\noindent\textbf{Submission to:} \CourseNumber{} --- \CourseName.\\
+\textbf{Course session:} \CourseSession. \textbf{Team:} \TeamCode. \textbf{Symposium:} \SymposiumSession.\\
+\textbf{Course instructor:} \Instructor. \textbf{Assignment:} PS2 collaborative research proposal.\par\smallskip}
+\title{Stay or Switch? Strategic Memory Portability in Competing AI Assistants}
+\author{Yiqiao Liu (Mickey)}
+\affiliation{\institution{Duke Kunshan University}\city{Kunshan}\country{China}}
+\email{yl1081@duke.edu}
+\renewcommand{\shortauthors}{Yiqiao Liu (Mickey)}
+
+\newif\ifTeachingAnnotations
+\TeachingAnnotationstrue
+\input{annotations/setup}
+
+\begin{document}
+\begin{teaserfigure}
+\captionsetup{skip=8pt}
+\centering
+\input{figures/ps2_teaser.tex}
+\caption{Evidence chain for strategic memory portability. The platform game, computation, welfare/incentive comparisons, and allocation analogy are completed at snapshot \texttt{f9523b0}. The public Stay/Switch artifact structures a separate user test; behavioral inference and the A0 poster remain planned.}
+\Description{Three panels connect a Bayesian platform game, reproducible computational checks, and a public user-decision artifact to a synthesis: portability may be socially valuable yet strategically absent, while behavioral conclusions and the A0 poster remain future work.}
+\label{fig:teaser}
+\end{teaserfigure}
+\maketitle\raggedbottom\coursemeta
+
+\input{sections/proposal}
+\input{appendices/supporting}
+\end{document}

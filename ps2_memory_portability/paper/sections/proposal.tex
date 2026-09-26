@@ -1,0 +1,54 @@
+\section{Three connected research questions and verified gap}
+AI-assistant memory can create switching costs and lock-in~\cite{farrell2007coordination}; portability can reduce that friction, but effects depend on the market~\cite{viard2007switching,kim2026portability}. Prior work models strategic compatibility in complementary products~\cite{jeon2023compatibility}. This project instead asks when two platforms with private implementation costs supply memory portability, whether strategic adoption matches a stated collective objective, and whether users would actually switch.
+
+\textbf{Q1---Economics:} Which type-contingent portability choices are Bayesian equilibria, and how do welfare and a verified-portability incentive compare? \textbf{Q2---Computation:} Do exhaustive checks, sweeps, and an allocation analogy reproduce the thresholds? \textbf{Q3---Behavior:} When a benchmark favors switching, does persistence reflect status quo or omitted trust, privacy, and personalization? The shared question is when portability becomes both supplied and useful. Figure~\ref{fig:teaser} separates completed platform evidence from the planned user test.
+
+\section{Answer to Q1: incentives and strategic model}
+Nature independently draws each platform's private cost $c_i\in\{c_L,c_H\}$ with $\Pr(c_i=c_L)=p$; platforms simultaneously choose Portable ($P$) or Locked ($L$). With rival portability probability $q$,
+\[
+EU(P\mid c_i)=3q-1-c_i,\qquad EU(L\mid c_i)=q,
+\]
+so $P$ is a weak best response iff $2q-1\ge c_i$~\cite{harsanyi1968}. At $c_L=.2,c_H=1.2,p=.7$, type-level checks yield exactly two pure BNE, $(LL,LL)$ and $(PL,PL)$, plus a symmetric mixed equilibrium: high types lock and low types choose $P$ with probability $6/7$. Multiplicity is not resolved.
+
+\emph{Game theory} gives the $PL$ threshold $p\ge(1+c_L)/2=.6$. \emph{Social choice} adds the cardinal objective $W=u_A+u_B+U_{user}$: at mobility value $m=1$, $W_{LL}=0$, $W_{PL}=2.17$, and the non-equilibrium comparator $W_{PP}=4$. \emph{Mechanism design} adds benefit $\tau$, changing the threshold to $p\ge(1+c_L-\tau)/2$. At $p=.4$, $\tau=.4$ sustains $PL$, but $LL$ remains a weak BNE through $\tau=1.2$: the intervention expands equilibria without selecting one.
+
+\section{Answer to Q2: computation, auction comparison, and artifacts}
+Python enumerates all $4\times4=16$ pure profiles and checks every type against deviations; an independent PyGambit Harsanyi game returns the same two pure BNE. Integer-built grids sweep $p=.01,\ldots,.99$, $c_L=0,.05,\ldots,1.15$, and $\tau=0,.05,\ldots,2.5$. Saved CSV/JSON includes rejected profiles; 85/85 tests pass.
+
+The allocation analogy assigns one primary-assistant slot between two iid $U[0,1]$ platform values. Portability lowers the assumed reserve from $r=.5$ to $r=.2$. Second price uses truthful bids~\cite{vickrey1961counterspeculation}; first price uses $b(v;r)=(v^2+r^2)/(2v)$ for $v\ge r$. With seed 20603 and 100,000 common draws, allocation rises from .75193 (analytical .75) to .96004 (.96). Locked/portable unconditional payments are .41788/.36320 (first price) and .41818/.36414 (second price); conditional efficiency is one. The user is not auctioned, reserves are normalized assumptions, and no optimal-auction claim is made~\cite{myerson1981optimal}.
+
+\textbf{GitHub:} \GitHubLink. \textbf{Notebook:} \NotebookLink.\\
+\textbf{Hugging Face:} \HuggingFaceLink. \textbf{A0 poster:} \PosterLink.
+
+\clearpage\balance
+\section{Answer to Q3: behavior and interdisciplinary integration}
+The public Static Space crosses hurdles $r=.20$, $.35$, or $.50$ with benefits $g=.15$, $.30$, $.45$, or $.60$. A user decides before seeing the rule, rates switching difficulty, personalization loss, privacy, and trust, then sees the simplified benchmark ``Switch iff $g>r$'' and decides again. Six scenarios predict Stay and six Switch. Status-quo-bias evidence motivates the hypothesis of persistence~\cite{samuelson1988statusquo}, but a Stay choice can instead reflect preferences omitted from $g-r$. The Space has no backend, tracking, persistent store, or cross-browser aggregation; peer summaries use prior plays in the current page session only. It is publicly deployed and technically verified, but no participant-level conclusion is claimed.
+
+A future structured classroom test would compare initial/final decisions and ratings across the fixed scenarios. Persistence concentrated when $g-r>0$, conditional on measured concerns, would qualify the user-mobility term; sensitivity to disclosure would motivate interface revision. Benchmark alignment would retain the simple rule only as a descriptive classroom benchmark. Either result would leave platform BNE as a separate unit of analysis.
+
+\section{Advanced development, real-world impact, and roadmap}
+Harsanyi's incomplete-information foundation and the Vickrey--Myerson auction literature discipline the economic claims; reproducible enumeration makes every profile inspectable. The distinctive contribution is an auditable chain from privately costly platform portability, through welfare and incentives, to user mobility---while keeping firm equilibria, simulated allocations, and prospective behavioral evidence separate.
+
+Consider a student or writer deciding whether to move years of AI-assistant context. Users may gain choice; incumbent and entrant platforms face implementation, competition, and security incentives; regulators and institutions need interoperable, privacy-preserving standards. Academia requires identification and replicable evidence, industry requires reliability and security tests, and public institutions require access, accountability, and correction. The next discriminating test is whether portable-memory scenarios increase actual switching relative to no-portability scenarios without raising privacy concern; the present artifact does not answer it.
+
+\begin{table}[h]\caption{From foundations to an interdisciplinary contribution.}\small
+\begin{tabularx}{\columnwidth}{@{}p{1.35cm}Y@{}}\toprule
+\textbf{Horizon}&\textbf{Milestone and evidence}\\\midrule
+Foundation&Incomplete-information games; switching costs; auction design.\\
+PS2&Two pure BNE, welfare/incentive comparisons, seeded allocation simulation, public decision artifact.\\
+Symposium&Planned A0 claim and genuine peer challenges; none recorded yet.\\
+Next study&Consent-based scenario comparison with privacy and access safeguards.\\
+2056&Validated interoperable-memory institutions with accountable correction.\\\bottomrule
+\end{tabularx}\end{table}
+
+\noindent\textbf{Expected 2056 Nobel Prize and Turing Award contribution statement.}
+By 2056, the aspiration is a tested theory and computational design for interoperable AI memory that aligns platform incentives with user agency. Progress would require multi-market validation, secure standards, mechanism trials, and behavioral evidence; neither awards nor impact are predicted by PS2.
+
+\subsection*{Open Science Statement}
+Snapshot \texttt{f9523b0} contains source, two executed notebooks, pinned dependencies, deterministic outputs, tests, and evidence boundaries. From \path{ps2_memory_portability/}, run \texttt{conda run -n cs206-ps2 python -m unittest discover -s tests -v}; the recorded result is 85/85. The Static Space is public; it stores no shared participant dataset. The repository has no new blanket license grant. The poster remains planned.
+
+\subsection*{Statement of Contribution to the UN's SDGs}
+No demonstrated SDG impact is claimed. A future secure portability standard could be evaluated against SDG target 9.1's inclusive-infrastructure objective~\cite{un_sdg} using successful export/import, accessibility, privacy incidents, and switching completion as indicators. Possible harms include data leakage and exclusion when transferred context is incomplete; audits and user-controlled correction are required.
+
+\subsection*{Submission milestones}
+Review-ready: September 27, 2026, 11:00 P.M. Beijing time. Symposium and peer evaluation: September 28, 2:45--5:15 P.M., IB 2050. Final revision: September 30, 11:00 P.M. Beijing time. No symposium or peer-review outcome is reported in this review-ready version.
