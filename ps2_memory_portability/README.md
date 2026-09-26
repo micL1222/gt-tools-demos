@@ -176,9 +176,12 @@ conda run -n cs206-ps2 python app.py
 **Status:**
 
 - Gradio prototype: locally verified.
-- Free Static Space version: deployment-ready.
-- Public Static URL: pending manual upload.
+- Static Space: publicly deployed and technically verified.
+- Public Static URL: [Stay or Switch? on Hugging Face](https://huggingface.co/spaces/mickeystk/ps2-stay-or-switch-memory-portability).
+- Peer summaries: current-browser-session only; no backend or persistent behavioral store.
 - Behavioral evidence: not yet analyzed.
+
+No participant-level behavioral conclusion is claimed.
 
 This is an exploratory classroom demonstration, not a representative or
 causal study. Parameters are normalized assumptions, differences from the

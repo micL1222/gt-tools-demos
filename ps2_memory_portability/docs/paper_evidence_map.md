@@ -82,8 +82,8 @@ artifacts that make those results auditable.
 - **Our result:** **NOT YET COLLECTED.** No participant behavior or AI-user
   response is available.
 - **Artifact evidence:** Behavioral artifact implemented in a locally verified
-  Gradio prototype and converted to a free Static Space package; local/static
-  validation complete and manual public upload pending. The predetermined
+  Gradio prototype and converted to a free Static Space package; the public
+  Static behavioral artifact is deployed and technically verified. The predetermined
   [`behavioral_scenario_catalog.csv`](../outputs/behavioral_scenario_catalog.csv),
   [`behavioral_validation.json`](../outputs/behavioral_validation.json),
   [artifact specification](behavioral_artifact_specification.md), and
@@ -92,10 +92,10 @@ artifacts that make those results auditable.
 - **Permitted wording:** “Status-quo bias motivates testing whether observed
   Stay/Switch decisions depart from a simplified switching-cost benchmark.”
 - **Prohibited wording:** “Our participants exhibit status-quo bias.”
-- **Current status wording:** “Behavioral artifact implemented in Gradio and
-  converted to a free Static Space package; local/static validation complete;
-  manual public deployment pending; no participant behavioral conclusions
-  claimed.”
+- **Current status wording:** “Public behavioral artifact deployed and
+  technically verified. The artifact structures hypothetical Stay/Switch
+  decisions and self-reflection, but no participant-level behavioral conclusion
+  is claimed.”
 
 ## Limitations and Real-World Impact
 

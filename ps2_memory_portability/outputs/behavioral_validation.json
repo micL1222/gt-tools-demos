@@ -6,8 +6,8 @@
   "benefit_levels": [0.15, 0.3, 0.45, 0.6],
   "condition_count": 3,
   "contains_participant_data": false,
-  "deployed_revision": null,
-  "deployment_status": "failed_gradio_compute_hosting",
+  "deployed_revision": "9ffb3cadcb80d558cb1d4473d227a383b8a5aa50",
+  "deployment_status": "deployed_static_public",
   "free_text_policy": "Optional, maximum 300 characters, session-only, never aggregated or persisted",
   "gradio_prototype": {
     "deployment_attempt_status": "failed_http_402_paid_compute_requirement",
@@ -18,7 +18,7 @@
     "status": "locally_verified"
   },
   "gradio_version": "6.28.0",
-  "hugging_face_space_url": null,
+  "hugging_face_space_url": "https://huggingface.co/spaces/mickeystk/ps2-stay-or-switch-memory-portability",
   "hurdle_mapping": {"Full": 0.2, "None": 0.5, "Partial": 0.35},
   "local_smoke_test_status": "passed",
   "peer_aggregation_policy": "Same-condition and overall summaries use prior anonymous plays only; current play is added after the snapshot; raw rows are never displayed",
@@ -26,21 +26,36 @@
   "python_version": "3.12.14",
   "scenario_count": 12,
   "static_variant": {
-    "browser_interaction_smoke_test": "passed for FULL_030 initial decision, reflection validation, benchmark reveal, final submission, and new scenario reset",
+    "browser_interaction_smoke_test": "publicly passed for FULL_030 initial decision, four ratings, benchmark reveal, locked inputs, final submission, empty first peer state, new-scenario reset, and same-page prior-peer summary",
     "external_analytics": false,
     "external_behavioral_endpoint": false,
     "files_present": ["README.md", "index.html", "styles.css", "app.js", "scenarios.json"],
     "html_static_server_smoke_test": "passed",
     "javascript_syntax_check": "passed with Node v22.22.2",
-    "manual_public_deployment_status": "pending_manual_upload",
+    "manual_public_deployment_status": "deployed_and_http_verified",
+    "public_deployment_status": "deployed",
+    "public_space_url": "https://huggingface.co/spaces/mickeystk/ps2-stay-or-switch-memory-portability",
+    "public_space_owner": "mickeystk",
+    "public_space_slug": "ps2-stay-or-switch-memory-portability",
+    "public_space_sdk": "static",
+    "public_space_visibility": "public",
+    "public_space_runtime_status": "RUNNING",
+    "public_http_verification_status": "passed; public Space API, README, index.html, styles.css, app.js, and scenarios.json reachable",
+    "public_browser_verification_status": "passed for FULL_030 full flow, new-scenario reset, same-page peer summary, and PARTIAL_045/NONE_045 benchmark reveals; refresh-reset was not independently re-tested because the browser automation refresh command did not change the page state",
+    "scenario_verification": {
+      "FULL_030": {"g": 0.3, "r": 0.2, "g_minus_r": 0.1, "benchmark": "Switch"},
+      "PARTIAL_045": {"g": 0.45, "r": 0.35, "g_minus_r": 0.1, "benchmark": "Switch"},
+      "NONE_045": {"g": 0.45, "r": 0.5, "g_minus_r": -0.05, "benchmark": "Stay"}
+    },
+    "public_verification_limitations": "The public static host has no backend; refresh/close clears in-memory peer history. Cross-device aggregation and participant-level evidence were not collected.",
     "persistence_backend": "none",
     "peer_aggregation_scope": "prior anonymous plays in the current browser page session",
     "scenario_parity_with_canonical_csv": "passed",
     "scenario_count": 12,
-    "status": "deployment_ready",
+    "status": "publicly_deployed_and_technically_verified",
     "benchmark_stay_count": 6,
     "benchmark_switch_count": 6,
     "storage_scope": "JavaScript memory only; refresh and close reset state"
   },
-  "validation_timestamp_utc": "2026-09-26T03:41:53Z"
+  "validation_timestamp_utc": "2026-09-26T04:36:07Z"
 }

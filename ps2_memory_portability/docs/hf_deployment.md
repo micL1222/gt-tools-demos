@@ -29,15 +29,19 @@ repository.
 
 Deployment was attempted on 2026-09-25 and stopped at repository creation with
 HTTP 402. Hugging Face reported that Gradio and Docker Spaces on the free
-`cpu-basic` tier require a paid plan. No Space repository was created, so there
-is no Space URL, build status, or deployed revision to report.
+`cpu-basic` tier require a paid plan. At that historical Gradio attempt, no
+Space repository was created, so there was no Gradio Space URL, build status,
+or deployed revision to report.
 
-## Chosen fallback: free Static Space
+## Chosen fallback: free Static Space (deployed)
 
 The project deliberately does not use a paid compute plan. The new
-`behavioral_static_space/` package is a zero-build HTML, CSS, and vanilla
+The `behavioral_static_space/` package is a zero-build HTML, CSS, and vanilla
 JavaScript upload package for a manually created Hugging Face **Static** Space.
-Its manual upload procedure is in [hf_static_deployment.md](hf_static_deployment.md).
+It was manually deployed successfully at
+https://huggingface.co/spaces/mickeystk/ps2-stay-or-switch-memory-portability.
+Its verification record and maintenance procedure are in
+[hf_static_deployment.md](hf_static_deployment.md).
 
 ## Behavioral difference
 
@@ -63,5 +67,5 @@ A successful upload alone is insufficient. Deployment is complete only after:
 3. no immediate runtime error appears; and
 4. initialization can be checked without adding a fake behavioral response.
 
-Until those checks succeed, documentation and validation output must retain a
-pending or failed deployment status and must not contain a guessed URL.
+Those checks now succeed for the public Static Space. The earlier Gradio
+failure remains historical and is not the current deployment status.

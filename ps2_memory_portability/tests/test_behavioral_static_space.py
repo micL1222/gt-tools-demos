@@ -108,7 +108,10 @@ class StaticSpacePackageTests(unittest.TestCase):
                 self.assertNotIn(forbidden, record_section)
 
     def test_readme_discloses_browser_session_limit_and_reset(self):
-        self.assertIn("current browser session", self.readme)
+        self.assertTrue(
+            "current browser session" in self.readme
+            or "current browser-page session" in self.readme
+        )
         self.assertIn("different devices or browsers", self.readme)
         self.assertIn("Refreshing or closing the page clears", self.readme)
 
